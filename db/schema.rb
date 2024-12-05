@@ -13,9 +13,9 @@
 ActiveRecord::Schema[7.1].define(version: 2024_12_05_222311) do
   create_table "accounts", force: :cascade do |t|
     t.string "name"
-    t.decimal "balance"
+    t.decimal "balance", precision: 11, scale: 2, default: "0.0"
     t.integer "account_type"
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
@@ -28,7 +28,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_05_222311) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "role", default: 0
-    t.decimal "account_balance", precision: 11, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
