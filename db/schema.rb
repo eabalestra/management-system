@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_05_231747) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_06_010540) do
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.decimal "balance", precision: 11, scale: 2, default: "0.0"
@@ -19,6 +19,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_05_231747) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "dir"
+    t.string "email"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "dir"
+    t.string "email"
+    t.string "city"
+    t.string "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transactions", force: :cascade do |t|
