@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SaSystem</title>
+    <title>Management System</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,8 +13,7 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <%= render 'shared/flash' %>
       <%= yield %>
     </main>
   </body>
