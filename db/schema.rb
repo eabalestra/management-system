@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_06_140130) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_10_192934) do
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.decimal "balance", precision: 11, scale: 2, default: "0.0"
@@ -57,6 +57,39 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_06_140130) do
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "quantity", null: false
+    t.decimal "price_at_sale", precision: 11, scale: 2, null: false
+    t.decimal "discount", precision: 5, scale: 2, default: "0.0"
+    t.integer "product_id", null: false
+    t.integer "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "order_payments", force: :cascade do |t|
+    t.decimal "amount", precision: 11, scale: 2, null: false
+    t.datetime "paid_at", null: false
+    t.integer "payment_method", null: false
+    t.integer "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_payments_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal "total_amount", precision: 11, scale: 2, null: false
+    t.integer "payment_status", default: 0, null: false
+    t.integer "user_id", null: false
+    t.integer "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -119,6 +152,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_06_140130) do
   add_foreign_key "accounts", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "order_payments", "orders"
+  add_foreign_key "orders", "clients"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "suppliers"
   add_foreign_key "transactions", "accounts", column: "destination_account_id"
   add_foreign_key "transactions", "accounts", column: "source_account_id"
