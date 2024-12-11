@@ -191,6 +191,9 @@ GEM
     parser (3.3.5.0)
       ast (~> 2.4.1)
       racc
+    pg_search (2.3.7)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     prism (1.1.0)
     psych (5.1.2)
       stringio
@@ -400,6 +403,7 @@ DEPENDENCIES
   htmlbeautifier (~> 1.4)
   importmap-rails
   jbuilder
+  pg_search (~> 2.3)
   puma (>= 6.4.3)
   rails (~> 7.1.4)
   rspec-rails (~> 7.0.0)
