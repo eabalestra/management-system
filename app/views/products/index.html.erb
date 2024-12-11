@@ -8,11 +8,9 @@
     <%= link_to "New product", new_product_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
   <%= turbo_frame_tag 'categories' do %>
-    <%= form_with url: products_path do |form|%>
-      <%= form.number_field :min_price, placeholder: "Min price" %>
-    <% end %>
-    <%= form_with url: products_path do |form|%>
-      <%= form.number_field :max_price, placeholder: "Max price" %>
+    <%= form_with url: products_path, method: :get do |form|%>
+      <%= form.number_field :min_price, placeholder: t('.min_price'), onChange: 'this.form.requestSubmit()', value: params[:min_price] %>
+      <%= form.number_field :max_price, placeholder: t('.max_price'), onChange: 'this.form.requestSubmit()', value: params[:max_price] %>
     <% end %>
     <%= link_to "Todas", products_path %>
     <%= render partial: 'category', collection: @categories %>
