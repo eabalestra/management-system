@@ -26,6 +26,12 @@ module ManagementSystem
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    # Available lenguages
+    config.i18n.available_locales = %i[en es]
+
+    # Default lenguage
+    config.i18n.default_locale = :en
+
     # Allow multiquery
     config.active_record.async_query_executor = :global_thread_pool
   end
