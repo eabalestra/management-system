@@ -65,7 +65,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'htmlbeautifier', '~> 1.4'
   gem 'rubocop', '~> 1.66'
+  gem 'solargraph', '~> 0.48.0'
 end
 
 group :test do

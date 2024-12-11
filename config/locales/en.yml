@@ -30,6 +30,10 @@
 en:
   hello: "Hello world"
 
+products:
+  index:
+    title: "Products"
+    all_categories: "All"
 categories:
   category:
     edit: "Edit"

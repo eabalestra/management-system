@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all.with_attached_image_url
+    @categories = Category.order(name: :asc).load_async
+    @products = Product.with_attached_image_url.load_async
+    return unless params[:category_id]
+
+    @products = @products.where(category_id: params[:category_id])
   end
 
   # GET /products/1 or /products/1.json
