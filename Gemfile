@@ -10,8 +10,8 @@ gem 'rails', '~> 7.1.4'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '>= 1.4'
+# Use pg as the database for Active Record
+gem 'pg', '~> 1.1'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 6.4.3'
@@ -49,6 +49,11 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# Use Devise for user authentication []
+gem 'devise', '~> 4.9'
+
+gem 'font-awesome-sass', '~> 6.5'
+
 # Postgres full-text search [https://github.com/Casecommons/pg_search]
 gem 'pg_search', '~> 2.3'
 
@@ -80,7 +85,3 @@ group :test do
   gem 'simplecov', '~> 0.22.0', require: false
   gem 'simplecov_json_formatter', '~> 0.1.4', require: false
 end
-
-gem 'devise', '~> 4.9'
-
-gem 'font-awesome-sass', '~> 6.5'
