@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
     filter_by_category if params[:category_id]
     filter_by_min_price if params[:min_price].present?
     filter_by_max_price if params[:max_price].present?
+    filter_by_query if params[:query_text].present?
   end
 
   # GET /products/1 or /products/1.json
@@ -85,5 +86,9 @@ class ProductsController < ApplicationController
 
   def filter_by_max_price
     @products = @products.where('unit_price <= ?', params[:max_price])
+  end
+
+  def filter_by_query
+    @products = @products.search_full_text(params[:query_text])
   end
 end

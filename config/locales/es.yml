@@ -9,6 +9,7 @@ es:
       all_categories: "Todos"
       min_price: "Precio mínimo"
       max_price: "Precio máximo"
+      query_text: "¿Qué estás buscando?"
 
   categories:
     category:

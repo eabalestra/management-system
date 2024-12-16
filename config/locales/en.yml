@@ -38,6 +38,7 @@ en:
       all_categories: "All"
       min_price: "Min price"
       max_price: "Max price"
+      query_text: "What are you looking for?"
 
   categories:
     category:
