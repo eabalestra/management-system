@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_10_192934) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_10_230117) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.decimal "balance", precision: 11, scale: 2, default: "0.0"
     t.integer "account_type"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
@@ -49,6 +52,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_192934) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "clients", force: :cascade do |t|
     t.string "name"
     t.string "phone"
@@ -63,8 +72,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_192934) do
     t.integer "quantity", null: false
     t.decimal "price_at_sale", precision: 11, scale: 2, null: false
     t.decimal "discount", precision: 5, scale: 2, default: "0.0"
-    t.integer "product_id", null: false
-    t.integer "order_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
@@ -75,7 +84,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_192934) do
     t.decimal "amount", precision: 11, scale: 2, null: false
     t.datetime "paid_at", null: false
     t.integer "payment_method", null: false
-    t.integer "order_id", null: false
+    t.bigint "order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_order_payments_on_order_id"
@@ -84,8 +93,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_192934) do
   create_table "orders", force: :cascade do |t|
     t.decimal "total_amount", precision: 11, scale: 2, null: false
     t.integer "payment_status", default: 0, null: false
-    t.integer "user_id", null: false
-    t.integer "client_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
@@ -104,9 +113,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_192934) do
     t.decimal "unit_price", precision: 11, scale: 2, null: false
     t.decimal "tax_amount", precision: 11, scale: 2, null: false
     t.decimal "profit_margin", precision: 11, scale: 2, default: "0.0"
-    t.integer "supplier_id", null: false
+    t.bigint "supplier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
 
@@ -124,11 +135,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_192934) do
   create_table "transactions", force: :cascade do |t|
     t.decimal "amount", precision: 11, scale: 2, default: "0.0"
     t.integer "transaction_type"
-    t.integer "source_account_id"
-    t.integer "destination_account_id"
+    t.bigint "source_account_id"
+    t.bigint "destination_account_id"
     t.string "description"
     t.datetime "timestamp"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["destination_account_id"], name: "index_transactions_on_destination_account_id"
@@ -157,6 +168,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_192934) do
   add_foreign_key "order_payments", "orders"
   add_foreign_key "orders", "clients"
   add_foreign_key "orders", "users"
+  add_foreign_key "products", "categories"
   add_foreign_key "products", "suppliers"
   add_foreign_key "transactions", "accounts", column: "destination_account_id"
   add_foreign_key "transactions", "accounts", column: "source_account_id"
