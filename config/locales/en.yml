@@ -28,6 +28,8 @@
 #       enabled: "ON"
 
 en:
+  app_name: "Management System"
+  meta_tittle: ""
   common:
     confirmation: "Are you sure you want to proceed with this action? This action is irreversible."
   products:
@@ -39,9 +41,9 @@ en:
       min_price: "Min price"
       max_price: "Max price"
       query_text: "What are you looking for?"
-      expensive: 'Expensive first'
-      cheapest: 'Cheaper first'
-      newest: 'Recently added'
+      expensive: "Expensive first"
+      cheapest: "Cheaper first"
+      newest: "Recently added"
 
   categories:
     category:

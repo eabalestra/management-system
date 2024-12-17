@@ -1,4 +1,6 @@
 es:
+  app_name: "Sistema de gestión"
+  meta_tittle: ""
   common:
     confirmation: "¿Está seguro de que desea realizar esta acción? Esta acción no se puede deshacer."
   products:
@@ -10,9 +12,9 @@ es:
       min_price: "Precio mínimo"
       max_price: "Precio máximo"
       query_text: "¿Qué estás buscando?"
-      expensive: 'Mayor precio'
-      cheapest: 'Menor precio'
-      newest: 'Añadidos recientemente'
+      expensive: "Mayor precio"
+      cheapest: "Menor precio"
+      newest: "Añadidos recientemente"
 
   categories:
     category:

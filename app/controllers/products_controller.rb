@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   def index
     @categories = Category.order(name: :asc).load_async
-    @pagy, @products = pagy(FindProducts.new.call(params).load_async)
+    @pagy, @products = pagy(FindProducts.new.call(products_params_index).load_async)
   end
 
   # GET /products/1 or /products/1.json
@@ -70,5 +70,9 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:code, :name, :description, :image_url, :stock_quantity, :last_price_update,
                                     :last_stock_update, :unit_cost, :unit_price, :tax_amount, :profit_margin,
                                     :supplier_id, :category_id)
+  end
+
+  def products_params_index
+    params.permit(:category_id, :min_price, :max_price, :query_text, :order_by)
   end
 end
