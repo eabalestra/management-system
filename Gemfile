@@ -52,6 +52,7 @@ gem 'bootsnap', require: false
 # Use Devise for user authentication []
 gem 'devise', '~> 4.9'
 
+#
 gem 'font-awesome-sass', '~> 6.5'
 
 # Postgres full-text search [https://github.com/Casecommons/pg_search]
