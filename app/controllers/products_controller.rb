@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
+    @categories = Category.order(name: :asc).load_async
     @pagy, @products = pagy(FindProducts.new.call(params).load_async)
   end
 
