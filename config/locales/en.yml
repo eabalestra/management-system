@@ -28,4 +28,37 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  app_name: "Management System"
+  meta_tittle: ""
+  common:
+    confirmation: "Are you sure you want to proceed with this action? This action is irreversible."
+  products:
+    edit:
+      title: "Editing product"
+    index:
+      title: "Products"
+      all_categories: "All"
+      min_price: "Min price"
+      max_price: "Max price"
+      query_text: "What are you looking for?"
+      expensive: "Expensive first"
+      cheapest: "Cheaper first"
+      newest: "Recently added"
+
+  categories:
+    category:
+      edit: "Edit"
+      delete: "Delete"
+    index:
+      title: "Categories"
+      new: "Add category"
+    edit:
+      title: "Edit category"
+    create:
+      created: "Your category has been successfully created"
+    update:
+      updated: "Your category has been successfully updated"
+    destroy:
+      destroyed: "Your category has been successfully destroyed"
+    new:
+      title: "New category"

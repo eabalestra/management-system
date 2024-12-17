@@ -1,0 +1,30 @@
+<div class="w-full">
+  <% content_for :title, "Products" %>
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Products</h1>
+    <%= link_to "New product", new_product_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+  <%= turbo_frame_tag 'home' do %>
+    <%= form_with url: products_path, method: :get do |form|%>
+      <%= form.text_field :query_text, placeholder: t('.query_text'), onChange: 'this.form.requestSubmit()', value: params[:query_text] %>
+      <%= form.number_field :min_price, placeholder: t('.min_price'), onChange: 'this.form.requestSubmit()', value: params[:min_price] %>
+      <%= form.number_field :max_price, placeholder: t('.max_price'), onChange: 'this.form.requestSubmit()', value: params[:max_price] %>
+      <%= form.select :order_by, options_for_select(Product::ORDER_BY.keys.map {|order| [t(".#{order}"), order]}, params[:order_by]), {}, { onChange: 'this.form.requestSubmit()' } %>
+    <% end %>
+    <%= link_to "Todas", products_path %>
+    <%= render partial: 'category', collection: @categories %>
+    <%= turbo_frame_tag "products" do %>
+      <div id="products" class="min-w-full">
+        <% @products.each do |product| %>
+          <%= render product %>
+          <p>
+            <%= link_to product, 'data-turbo-frame': '_top', class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" do %>
+              Show this product
+            <% end %>
+          </p>
+        <% end %>
+      </div>
+      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,35 @@
+es:
+  app_name: "Sistema de gestión"
+  meta_tittle: ""
+  common:
+    confirmation: "¿Está seguro de que desea realizar esta acción? Esta acción no se puede deshacer."
+  products:
+    edit:
+      title: "Editando producto"
+    index:
+      title: "Productos"
+      all_categories: "Todos"
+      min_price: "Precio mínimo"
+      max_price: "Precio máximo"
+      query_text: "¿Qué estás buscando?"
+      expensive: "Mayor precio"
+      cheapest: "Menor precio"
+      newest: "Añadidos recientemente"
+
+  categories:
+    category:
+      edit: "Editar"
+      delete: "Borrar"
+    index:
+      title: "Categorías"
+      new: "Añadir categoría"
+    edit:
+      title: "Editar categoría"
+    create:
+      created: "Tu categoría se ha creado correctamente"
+    update:
+      updated: "Tu categoría se ha actualizado correctamente"
+    destroy:
+      destroyed: "Tu categoría se ha eliminado correctamente"
+    new:
+      title: "Añadir categoría"

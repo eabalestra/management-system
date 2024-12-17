@@ -1,0 +1,32 @@
+<div id="<%= dom_id transaction %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Amount:</strong>
+    <%= transaction.amount %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Transaction type:</strong>
+    <%= transaction.transaction_type %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Source account:</strong>
+    <%= transaction.source_account_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Destination account:</strong>
+    <%= transaction.destination_account_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= transaction.description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Timestamp:</strong>
+    <%= transaction.timestamp %>
+  </p>
+
+</div>

@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '3.3.0'
+ruby '3.3.5'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.4'
@@ -10,8 +10,8 @@ gem 'rails', '~> 7.1.4'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '>= 1.4'
+# Use pg as the database for Active Record
+gem 'pg', '~> 1.5'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 6.4.3'
@@ -49,9 +49,17 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-group :production do
-  gem 'pg', '~> 1.5'
-end
+# Use Devise for user authentication []
+gem 'devise', '~> 4.9'
+
+#
+gem 'font-awesome-sass', '~> 6.5'
+
+# Postgres full-text search [https://github.com/Casecommons/pg_search]
+gem 'pg_search', '~> 2.3'
+
+# Paginate collections [https://github.com/ddnexus/pagy.git]
+gem 'pagy', '~> 9.3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -69,7 +77,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'htmlbeautifier', '~> 1.4'
   gem 'rubocop', '~> 1.66'
+  gem 'solargraph', '~> 0.48.0'
 end
 
 group :test do
@@ -79,7 +89,3 @@ group :test do
   gem 'simplecov', '~> 0.22.0', require: false
   gem 'simplecov_json_formatter', '~> 0.1.4', require: false
 end
-
-gem 'devise', '~> 4.9'
-
-gem 'font-awesome-sass', '~> 6.5'
