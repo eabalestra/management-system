@@ -137,4 +137,18 @@ RSpec.describe '/products', type: :request do
       expect(response.body).to have_selector('product', count: 1)
     end
   end
+
+  describe 'sort products by expensive prices first' do
+    it 'returns products sorted by price in descending order' do
+      product1 = Product.create!(name: 'Product 1', price: 100)
+      product2 = Product.create!(name: 'Product 2', price: 200)
+      product3 = Product.create!(name: 'Product 3', price: 150)
+
+      get products_url(order_by: 'expensive')
+
+      expect(response).to be_successful
+      sorted_products = assigns(:products)
+      expect(sorted_products).to eq([product2, product3, product1])
+    end
+  end
 end

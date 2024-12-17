@@ -5,6 +5,12 @@ class Product < ApplicationRecord
     description: 'B'
   }
 
+  ORDER_BY = {
+    'newest' => { created_at: :desc },
+    'expensive' => { unit_price: :desc },
+    'cheapest' => { unit_price: :asc }
+  }
+
   has_one_attached :image_url
 
   belongs_to :supplier

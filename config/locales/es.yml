@@ -10,6 +10,9 @@ es:
       min_price: "Precio mínimo"
       max_price: "Precio máximo"
       query_text: "¿Qué estás buscando?"
+      expensive: 'Mayor precio'
+      cheapest: 'Menor precio'
+      newest: 'Añadidos recientemente'
 
   categories:
     category:

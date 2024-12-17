@@ -4,11 +4,13 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     @categories = Category.order(name: :asc).load_async
-    @products = Product.with_attached_image_url.load_async
+    @products = Product.with_attached_image_url
     filter_by_category if params[:category_id]
     filter_by_min_price if params[:min_price].present?
     filter_by_max_price if params[:max_price].present?
     filter_by_query if params[:query_text].present?
+    order_by = Product::ORDER_BY.fetch(params[:order_by], { name: :asc })
+    @products = @products.order(order_by).load_async
   end
 
   # GET /products/1 or /products/1.json
