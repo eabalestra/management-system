@@ -59,9 +59,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_230117) do
   end
 
   create_table "clients", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "phone"
-    t.string "dir"
+    t.string "address"
     t.string "email"
     t.string "city"
     t.datetime "created_at", null: false
@@ -122,9 +122,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_230117) do
   end
 
   create_table "suppliers", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "phone"
-    t.string "dir"
+    t.string "address"
     t.string "email"
     t.string "city"
     t.string "website"
