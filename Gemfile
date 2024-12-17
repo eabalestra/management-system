@@ -57,6 +57,9 @@ gem 'font-awesome-sass', '~> 6.5'
 # Postgres full-text search [https://github.com/Casecommons/pg_search]
 gem 'pg_search', '~> 2.3'
 
+# Paginate collections [https://github.com/ddnexus/pagy.git]
+gem 'pagy', '~> 9.3'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
