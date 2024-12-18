@@ -64,6 +64,8 @@ gem 'pagy', '~> 9.3'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
+  gem 'factory_bot_rails', '~> 6.4'
+  gem 'faker', '~> 3.5'
   gem 'rspec-rails', '~> 7.0.0'
   gem 'ruby-lsp', '~> 0.19.0'
 end
