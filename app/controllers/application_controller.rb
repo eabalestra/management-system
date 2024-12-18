@@ -3,17 +3,17 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
 
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
-  # layout :layout_by_resource
+  layout :layout_by_resource
 
-  # private
+  private
 
-  # def layout_by_resource
-  #   if devise_controller?
-  #     'devise'
-  #   else
-  #     'application'
-  #   end
-  # end
+  def layout_by_resource
+    if devise_controller?
+      'devise'
+    else
+      'application'
+    end
+  end
 end
