@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :product do
-    code { Faker::Code.asin }
+    code { SecureRandom.hex(6) }
     name { Faker::Name.name }
     description { Faker::Lorem.paragraph }
     stock_quantity { Faker::Number.number(digits: 2) }

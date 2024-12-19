@@ -17,11 +17,14 @@ RSpec.describe '/products', type: :request do
   # Product. As you add validations to Product, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    FactoryBot.attributes_for(:product)
+    FactoryBot.attributes_for(:product).merge(
+      supplier_id: FactoryBot.create(:supplier).id,
+      category_id: FactoryBot.create(:category).id
+    )
   end
 
   let(:invalid_attributes) do
-    FactoryBot.attributes_for(:product, name: nil, price: nil, description: nil)
+    { name: nil, unit_cost: nil }
   end
 
   before(:each) do
@@ -60,19 +63,18 @@ RSpec.describe '/products', type: :request do
   end
 
   describe 'POST /create' do
-    # context 'with valid parameters' do
-    #   it 'creates a new Product' do
-    #     expect do
-    #       p "===> #{valid_attributes}"
-    #       post products_url, params: { product: valid_attributes }
-    #     end.to change(Product, :count).by(1)
-    #   end
+    context 'with valid parameters' do
+      it 'creates a new Product' do
+        expect do
+          post products_url, params: { product: valid_attributes }
+        end.to change(Product, :count).by(1)
+      end
 
-    #   it 'redirects to the created product' do
-    #     post products_url, params: { product: valid_attributes }
-    #     expect(response).to redirect_to(product_url(Product.last))
-    #   end
-    # end
+      it 'redirects to the created product' do
+        post products_url, params: { product: valid_attributes }
+        expect(response).to redirect_to(product_url(Product.last))
+      end
+    end
 
     context 'with invalid parameters' do
       it 'does not create a new Product' do
